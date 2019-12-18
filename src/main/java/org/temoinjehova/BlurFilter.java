@@ -5,6 +5,10 @@ import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.Size;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.bytedeco.opencv.global.opencv_imgproc.GaussianBlur;
 
@@ -13,18 +17,34 @@ public class BlurFilter extends FilterMat{
 
     }
     public void process() {
-        File f = new File("imgs/test.jpg");
-        Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
-        image = filterBlur(image);
+        File f = new File("imgs/");
 
-        File outputDir = new File("output");
-        File outputFile = new File(outputDir, "result.jpg");
-        opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
+        File[] list= f.listFiles();
+        for(File file:list) {
+            Mat image = opencv_imgcodecs.imread(file.getAbsolutePath());
+            try {
+                image = filterBlur(image);
+                File outputDir = new File("output");
+                File outputFile = new File(outputDir, file.getName());
+                opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
+            } catch (Exception e) {
+                new FilterException("Filter Blur Cannot be applied", e);
+            }
+        }
+
+
+
     }
+
+
+
+
     private Mat filterBlur(Mat image) {
         int size = 25;
         Mat result = image.clone();
         GaussianBlur(image, result, new Size(size, size), 0);
         return result;
     }
+
 }
+

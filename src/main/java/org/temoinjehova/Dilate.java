@@ -12,13 +12,23 @@ import static org.bytedeco.opencv.global.opencv_imgproc.getStructuringElement;
 
 public class Dilate extends FilterMat{
     public void process() {
-        File f = new File("imgs/test.jpg");
-        Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
-        image = filterDilate(image);
+        File f = new File("imgs/");
 
-        File outputDir = new File("output");
-        File outputFile = new File(outputDir, "result.jpg");
-        opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
+        File[] list= f.listFiles();
+        for(File file:list) {
+            Mat image = opencv_imgcodecs.imread(file.getAbsolutePath());
+            try {
+                image = filterDilate(image);
+                File outputDir = new File("output");
+                File outputFile = new File(outputDir, file.getName());
+                opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
+            } catch (Exception e) {
+                new FilterException("Filter Dilate Cannot be applied", e);
+            }
+        }
+
+
+
     }
     private Mat filterDilate(Mat image) {
         int size = 8;
