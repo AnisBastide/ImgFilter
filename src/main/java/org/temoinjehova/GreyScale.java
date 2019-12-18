@@ -9,8 +9,8 @@ import java.io.File;
 
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
 
-public class GreyScale {
-    public void filterGrayScale() {
+public class GreyScale extends FilterMat{
+    public void process() {
         File f = new File("imgs/test.jpg");
         Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
         image = filterGrayscale(image);
@@ -19,7 +19,7 @@ public class GreyScale {
         File outputFile = new File(outputDir, "result.jpg");
         opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
     }
-    public Mat filterGrayscale(Mat image) {
+    private Mat filterGrayscale(Mat image) {
         Mat result = new Mat(image.rows(), image.cols(), CvType.CV_8UC3);
         cvtColor(image, result, Imgproc.COLOR_RGB2GRAY);
         return result;
