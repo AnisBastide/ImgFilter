@@ -14,7 +14,11 @@ public class Dilate extends FilterMat{
     public void process() {
         File f = new File("imgs/test.jpg");
         Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
+        try{
         image = filterDilate(image);
+        } catch (Exception e) {
+            new FilterException("Filter dilate cannot be applied",e);
+        }
 
         File outputDir = new File("output");
         File outputFile = new File(outputDir, "result.jpg");
