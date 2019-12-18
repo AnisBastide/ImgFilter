@@ -13,7 +13,11 @@ import static org.bytedeco.opencv.global.opencv_imgproc.*;
 public class JavaCVHelper {
 
     public void exempleBlurFile() {
+<<<<<<< HEAD
         File f = new File("imgs/test.jpg");
+=======
+        File f = new File("imgs/gundam.jpg");
+>>>>>>> c90ed8e9aa8c95a6d9e843767e29fa9305cbd511
         Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
         image = filterBlur(image);
 
