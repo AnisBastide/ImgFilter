@@ -4,3 +4,9 @@ image=gundam.jpg filter applied=greyscale
 image=test.jpg filter applied=greyscale
 image=gundam.jpg filter applied=dilate
 image=test.jpg filter applied=dilate
+image=gundam.jpg filter applied=Blur
+image=test.jpg filter applied=Blur
+image=Capture d’écran 2019-12-19 à 12.08.58.png filter applied=Blur
+image=Capture d’écran 2019-12-16 à 11.41.49.png filter applied=Blur
+image=Capture d’écran 2019-12-19 à 12.08.58.png filter applied=dilate
+image=Capture d’écran 2019-12-16 à 11.41.49.png filter applied=dilate
