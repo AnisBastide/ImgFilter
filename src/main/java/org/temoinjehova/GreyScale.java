@@ -6,6 +6,7 @@ import org.opencv.core.CvType;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.File;
+import java.io.FileWriter;
 
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
 
@@ -21,6 +22,9 @@ public class GreyScale extends FilterMat{
                 File outputDir = new File("output");
                 File outputFile = new File(outputDir, file.getName());
                 opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
+                FileWriter fw = new FileWriter("imageFilter.log", true);
+                fw.write("image=" + file.getName() + " filter applied=greyscale"+ "\n");
+                fw.close();
             } catch (Exception e) {
                 new FilterException("Filter Greyscale Cannot be applied", e);
             }
