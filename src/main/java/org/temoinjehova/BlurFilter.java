@@ -9,10 +9,19 @@ import java.io.FileWriter;
 
 import static org.bytedeco.opencv.global.opencv_imgproc.GaussianBlur;
 
+/**
+ * apply a blur on an image
+ * child of class FilterMat
+ */
 public class BlurFilter extends FilterMat{
     public BlurFilter() {
 
     }
+    /**
+     * Launch the filter process and manage the input and output file
+     * @param input name of the input file
+     * @param output name of the output file
+     */
     public void process(String input, String output) {
         File f = new File(input);
 
@@ -33,9 +42,11 @@ public class BlurFilter extends FilterMat{
         }
     }
 
-
-
-
+    /**
+     * Apply the blur filter on the image
+     * @param image image on which the filter is applied
+     * @return the image with the filter
+     */
     private Mat filterBlur(Mat image) {
         int size = 25;
         Mat result = image.clone();

@@ -11,7 +11,16 @@ import java.io.FileWriter;
 import static org.bytedeco.opencv.global.opencv_imgproc.dilate;
 import static org.bytedeco.opencv.global.opencv_imgproc.getStructuringElement;
 
+/**
+ * child class of FilterMat
+ * Apply a dilate filter on an image
+ */
 public class Dilate extends FilterMat{
+    /**
+     * Launch the filter process and manage the input and output file
+     * @param input name of the input file
+     * @param output name of the output file
+     */
     public void process(String input, String output) {
         File f = new File(input);
 
@@ -31,6 +40,11 @@ public class Dilate extends FilterMat{
             }
         }
     }
+    /**
+     * Apply the Dilate filter on the image
+     * @param image image on which the filter is applied
+     * @return the image with the filter
+     */
     private Mat filterDilate(Mat image) {
         int size = 8;
         Mat result = image.clone();

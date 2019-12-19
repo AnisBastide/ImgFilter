@@ -2,10 +2,16 @@ package org.temoinjehova;
 
 import org.apache.commons.cli.*;
 
-import java.text.ParseException;
 import java.util.Arrays;
 
+/**
+ * Main class (launched when you launch the code)
+ */
 public class Main {
+    /**
+     * main method (launched when you launched the code)
+     * @param args arguments that are given when you launch the code
+     */
     public static void main(String[] args) {
         System.out.println(Arrays.toString(args));
         String input="imgs";
@@ -63,11 +69,5 @@ public class Main {
         } catch (org.apache.commons.cli.ParseException e) {
             e.printStackTrace();
         }
-
-
-//
-
- //
-
     }
 }
