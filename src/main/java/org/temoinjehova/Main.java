@@ -17,7 +17,7 @@ public class Main {
         options.addOption("h","help",false,"Display all arguments");
         options.addOption("f","filter",true,"Choose filter");
 
- 
+
         CommandLineParser parser = new DefaultParser();
         try{
             CommandLine cmd = parser.parse(options,args);
