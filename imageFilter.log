@@ -1,0 +1,6 @@
+image=gundam.jpg filter applied=greyscale
+image=test.jpg filter applied=greyscale
+image=gundam.jpg filter applied=greyscale
+image=test.jpg filter applied=greyscale
+image=gundam.jpg filter applied=dilate
+image=test.jpg filter applied=dilate

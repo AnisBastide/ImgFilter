@@ -12,15 +12,15 @@ import static org.bytedeco.opencv.global.opencv_imgproc.dilate;
 import static org.bytedeco.opencv.global.opencv_imgproc.getStructuringElement;
 
 public class Dilate extends FilterMat{
-    public void process() {
-        File f = new File("imgs/");
+    public void process(String input, String output) {
+        File f = new File(input);
 
         File[] list= f.listFiles();
         for(File file:list) {
             Mat image = opencv_imgcodecs.imread(file.getAbsolutePath());
             try {
                 image = filterDilate(image);
-                File outputDir = new File("output");
+                File outputDir = new File(output);
                 File outputFile = new File(outputDir, file.getName());
                 opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
                 FileWriter fw = new FileWriter("imageFilter.log", true);
